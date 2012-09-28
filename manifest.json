@@ -1,0 +1,34 @@
+{
+  "name" : "C9 Live",
+  "version" : "1.0.3",
+  "description" : "Live preview and auto refresh for Cloud9 IDE",
+  "background" : {
+    "scripts": ["background.js"]
+  },
+  "page_action" :
+  {
+    "default_icon" : "page_action_icon.png",
+    "default_title" : "Auto reload is ON"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "https://c9.io/*/*/workspace/*"
+      ],
+      "js" : ["c9-auto-refresh.js"],
+      "run_at" : "document_idle"
+    },
+    {
+      "matches" : [
+        "https://c9.io/*/*"
+      ],
+      "js" : ["jquery.min.js", "c9-ide.js"],
+      "run_at" : "document_idle"
+    }
+  ],
+  "icons" : {
+    "48" : "c9-auto-refresh-48.png",
+    "128" : "c9-auto-refresh-128.png"
+  },
+  "manifest_version": 2
+}
